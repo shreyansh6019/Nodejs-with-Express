@@ -3,7 +3,7 @@
 const Movie = require('../models/movieModel');
 const APIFeatures = require('../utils/apiFeatures')
 
-const CustomError = require('../utils/customError')
+const CustomError = require('../utils/customError');
 
 const asyncErrorHandler = require('../utils/asyncErrorHandler');
 
@@ -299,9 +299,10 @@ exports.deleteMovieById = asyncErrorHandler(async (req, res, next) => {
             const error = new CustomError(404, `Movie with ID:${req.params.id} not found`);
             return next(error);
         }
-        res.status(204).json({
-            status: 'success',
-            data: null
+        res.status(200).json({
+            status: 'Success',
+            message: "Movie deleted successfully.",
+            data: deletedMovie
         });
 });
 

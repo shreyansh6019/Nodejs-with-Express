@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 
 const moviesRoutes = require('./routes/moviesRoutes');
+const authRoutes = require('./routes/authRoutes')
 
 const CustomError = require('./utils/customError')
 
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
 
 //USING ROUTES
 app.use('/api/v1/movies', moviesRoutes);
+app.use('/api/v1/users', authRoutes);
 
 //Default Route & it should always defined in the last
 app.all('*path', (req, res, next)=> {
